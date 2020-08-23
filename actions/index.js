@@ -28,10 +28,46 @@ const MOVIE_DATA = [
     }
   ]
   
+
+  const CATEGORY_DATA = [
+    {id: '1', name: 'drama'},
+    {id: '2', name: 'action'},
+    {id: '3', name: 'adventure'},
+    {id: '4', name: 'history'},
+  ]
+  
+
+  // returns movies after 2 seconds
+    export const getCategories = () => {
+      return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(CATEGORY_DATA)
+            reject('Cannot get categories')
+        }, 50)
+      })
+    }
+
+  // returns movies after 2 seconds
     export const getMovies = () => {
       return new Promise((resolve, reject) => {
           setTimeout(() => {
             resolve(MOVIE_DATA)
-        }, 2000)
+            reject('Cannot get movies')
+        }, 50)
+      })
+    }
+
+    // Find movie by id
+    export const getMovieById = (id) => {
+
+      return new Promise((resolve, reject) => {
+        const movieIndex = MOVIE_DATA.findIndex((movie) => {
+          return movie.id === id
+        })
+        const movie = MOVIE_DATA[movieIndex]
+
+        setTimeout(() => {
+          resolve(movie)
+        }, 50)
       })
     }
